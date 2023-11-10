@@ -102,6 +102,13 @@
             <version>2.3.8</version>
         </dependency>
 
+        <!-- Dependency for using cucumber pretty reports -->
+        <dependency>
+            <groupId>me.jvt.cucumber</groupId>
+            <artifactId>reporting-plugin</artifactId>
+            <version>7.11.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

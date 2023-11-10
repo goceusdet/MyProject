@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
 //              "io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm" -- plugin to run allure reports
         },
         features = "src/test/resources/features", // connects TestRunner with feature files.
-        glue = "com/Stryker/stepDefinitions",// connects TestRunner with step definitions.
-        dryRun = true,
+        glue = "com/stryker/stepDefinitions",// connects TestRunner with step definitions.
+        dryRun = false,
         tags = "",
         publish = true // generating a report with public link
 )
