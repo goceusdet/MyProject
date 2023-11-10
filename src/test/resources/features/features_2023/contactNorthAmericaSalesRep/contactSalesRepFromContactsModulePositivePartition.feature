@@ -17,10 +17,10 @@ Feature: As a user, I am able to contact Sales Representative by submitting a va
     And user is on "<pageName>" page
     And user fills out form "<first name>" "<last name>" "<hospital/organization>" "<title/specialty>" "<email address>" "<phone number>" "<country>" "<city>" "<state>" "<zipcode>" "<message>"
     #And user clicks "submit" button (mock)
-    And user should see "Thank you! We have received your request. A Stryker representative will be in contact with you soon." message
+    And user captures UI confirmation message
     And user sends POST request with all filled out fields to endpoint "/content/stryker/us/en/endoscopy/contact"
     Then api "messageStatus" response field should be "Success"
-    And api "message" should match UI "UIMessage"
+    And api "message" should match UI confirmation message
 
     Examples:
       | pageName       | buttonType      | first name | last name | hospital/organization | title/specialty               | email address                | phone number | country   | city     | state | zipcode | message                                                                                               |
@@ -38,10 +38,10 @@ Feature: As a user, I am able to contact Sales Representative by submitting a va
     And user is on "<pageName>" page
     And user fills out form including valid fields "<zipCode>" "<email address>" "<phone number>"
     #And user clicks "submit" button (mock)
-    And user should see "Thank you! We have received your request. A Stryker representative will be in contact with you soon." message
+    And user captures UI confirmation message
     And user sends POST request with all filled out fields to endpoint "/content/stryker/us/en/endoscopy/contact"
     Then api "messageStatus" response field should be "Success"
-    And api "message" should match UI "UIMessage"
+    And api "message" should match UI confirmation message
 
     Examples:
       | pageName       | buttonType      | email address                | phone number | zipCode |
