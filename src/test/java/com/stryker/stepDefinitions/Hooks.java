@@ -1,5 +1,6 @@
 package com.stryker.stepDefinitions;
 
+import com.stryker.utils.DB_Util;
 import com.stryker.utils.Driver;
 import com.stryker.utils.Environment;
 import io.cucumber.java.After;
@@ -38,13 +39,39 @@ public class Hooks {
         Driver.closeDriver();
     }
 
+    /**
+     * @Before method to set BaseURI for API connection.
+     */
     @Before("@api")
     public void initApi() {
         RestAssured.baseURI = Environment.BASE_URL;
     }
+
+    /**
+     * @After method to Reset API connection
+     */
     @After("@api")
     public void resetApi(){
         RestAssured.reset();
+    }
+
+    /**
+     * @Before method to create connection with DB.
+     */
+    @Before("@db")
+    public void setupDB(){
+        DB_Util.createConnection();
+        System.out.println("Successfully connected to Database");
+    }
+
+    /**
+     * @After method to close connection with DB.
+     */
+    @After("@db")
+    public void closeDB(){
+        System.out.println("Closing DB connection...");
+        DB_Util.destroy();
+        System.out.println("Database connection has been closed.");
     }
 
 }
