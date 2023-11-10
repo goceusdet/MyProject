@@ -7,6 +7,9 @@ import java.util.Properties;
 public class Environment {
 
     public static final String URL;
+    public static final String CAREERS_PAGE_URL;
+    public static final String INVESTORS_PAGE_URL;
+    public static final String INTERNATIONAL_PAGE_URL;
 
     static {
         Properties properties = null;
@@ -17,7 +20,6 @@ public class Environment {
         try {
             //Out file is found via this path:
             String path = System.getProperty("user.dir") + "/src/test/resources/Environments/" + environment + ".properties";
-
             FileInputStream input = new FileInputStream(path);
             properties = new Properties();
             properties.load(input);
@@ -25,7 +27,11 @@ public class Environment {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         URL = properties.getProperty("stryker.url");
+        CAREERS_PAGE_URL = properties.getProperty("strykerCareersPageUrl");
+        INVESTORS_PAGE_URL = properties.getProperty("strykerInvestorsPageUrl");
+        INTERNATIONAL_PAGE_URL = properties.getProperty("strykerInternationalPageUrl");
     }
 
 }
