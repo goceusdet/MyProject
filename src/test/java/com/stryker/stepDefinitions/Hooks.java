@@ -5,6 +5,7 @@ import com.stryker.utils.Environment;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.restassured.RestAssured;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -35,6 +36,15 @@ public class Hooks {
             scenario.attach(screenshot, "image/png", scenario.getName());
         }
         Driver.closeDriver();
+    }
+
+    @Before("@api")
+    public void initApi() {
+        RestAssured.baseURI = Environment.BASE_URL;
+    }
+    @After("@api")
+    public void resetApi(){
+        RestAssured.reset();
     }
 
 }
