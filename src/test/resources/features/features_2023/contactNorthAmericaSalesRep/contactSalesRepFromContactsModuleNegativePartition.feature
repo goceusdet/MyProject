@@ -16,10 +16,10 @@ Feature: As a user, I am NOT able to contact Sales Representative by submitting 
     And user clicks on LEARN MORE "<buttonType>"
     And user is on "<pageName>" page
     #And user clicks "submit" button
-    And user sees "Please fill out all the form fields and click Submit" message
+    And user captures UI confirmation message
     And user sends POST request with empty fields to endpoint "/content/stryker/us/en/endoscopy/contact"
     Then api "messageStatus" response field should be "Failed"
-    And api "message" should match UI "UIMessage"
+    And api "message" should match UI confirmation message
 
     Examples:
       | pageName       | buttonType      |
@@ -40,7 +40,7 @@ Feature: As a user, I am NOT able to contact Sales Representative by submitting 
     And user sees "Please enter a valid zip code, email and phone number" message
     And user send POST request with invalid fields "<zipCode>" "<email address>" "<phone number>" to endpoint "/content/stryker/us/en/endoscopy/contact"
     Then api "messageStatus" response field should be "Failed"
-    And api "message" should match UI "UIMessage"
+    And api "message" should match UI confirmation message
 
     Examples:
       | pageName       | buttonType      | email address              | phone number   | zipCode  |
@@ -61,7 +61,7 @@ Feature: As a user, I am NOT able to contact Sales Representative by submitting 
     And user sees "Please enter a valid "<field>" message
     And user sends POST request with missing "<field>" field to endpoint "/content/stryker/us/en/endoscopy/contact"
     Then api "messageStatus" response field should be "Failed"
-    And api "message" should match UI "UIMessage"
+    And api "message" should match UI confirmation message
 
     Examples:
       | pageName       | buttonType      | field         |
