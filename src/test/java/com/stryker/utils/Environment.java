@@ -7,7 +7,10 @@ import java.util.Properties;
 public class Environment {
 
     public static final String URL;
+    public static final String DB_URL;
     public static final String BASE_URL;
+    public static final String DB_PASSWORD;
+    public static final String DB_USERNAME;
     public static final String CAREERS_PAGE_URL;
     public static final String INVESTORS_PAGE_URL;
     public static final String INTERNATIONAL_PAGE_URL;
@@ -29,8 +32,11 @@ public class Environment {
             e.printStackTrace();
         }
 
+        DB_URL = properties.getProperty("dbURL");
         URL = properties.getProperty("stryker.url");
         BASE_URL = properties.getProperty("API.base.URI");
+        DB_USERNAME = properties.getProperty("dbUsername");
+        DB_PASSWORD = properties.getProperty("dbPassword");
         CAREERS_PAGE_URL = properties.getProperty("strykerCareersPageUrl");
         INVESTORS_PAGE_URL = properties.getProperty("strykerInvestorsPageUrl");
         INTERNATIONAL_PAGE_URL = properties.getProperty("strykerInternationalPageUrl");
