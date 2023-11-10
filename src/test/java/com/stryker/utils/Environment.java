@@ -7,6 +7,7 @@ import java.util.Properties;
 public class Environment {
 
     public static final String URL;
+    public static final String BASE_URL;
     public static final String CAREERS_PAGE_URL;
     public static final String INVESTORS_PAGE_URL;
     public static final String INTERNATIONAL_PAGE_URL;
@@ -29,6 +30,7 @@ public class Environment {
         }
 
         URL = properties.getProperty("stryker.url");
+        BASE_URL = properties.getProperty("API.base.URI");
         CAREERS_PAGE_URL = properties.getProperty("strykerCareersPageUrl");
         INVESTORS_PAGE_URL = properties.getProperty("strykerInvestorsPageUrl");
         INTERNATIONAL_PAGE_URL = properties.getProperty("strykerInternationalPageUrl");
