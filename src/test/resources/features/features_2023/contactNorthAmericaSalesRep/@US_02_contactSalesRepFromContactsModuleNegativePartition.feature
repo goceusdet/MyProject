@@ -2,7 +2,7 @@
 Feature: As a user, I am NOT able to contact Sales Representative by submitting invalid form
 
 
-  Background: User goes to Stryker home page and navigates to contact form
+  Background: User goes to Stryker home page and navigates to contact-form's page
     Given user is on "stryker" page
     And user is on a "Contact" navigation menu window
     And user clicks on "North America" continent
@@ -29,7 +29,7 @@ Feature: As a user, I am NOT able to contact Sales Representative by submitting 
 
 
   @TC_04 @US_02 @api @ui
-  Scenario Outline: Verify user can not contact Sales Representative by inputting invalid form-field
+  Scenario Outline: Verify user can not contact Sales Representative by inputting invalid form-fields
     #Given user is on "stryker" page (this is handled by custom @ui hook in Hooks class)
     #And user is on a "Contact" navigation menu window
     #And user clicks on "North America" continent
@@ -49,7 +49,7 @@ Feature: As a user, I am NOT able to contact Sales Representative by submitting 
       | communications | communications  | dmalster5-dagondesign-com  | 674-55977-1744 | Invalid3 |
 
 
-  @TC_05 @US_02 @api @ui
+  @TC_05  @US_02 @api @ui
   Scenario Outline: Verify user can not contact Sales Representative by missing a form-field
     #Given user is on "stryker" page (this is handled by custom @ui hook in Hooks class)
     #And user is on a "Contact" navigation menu window

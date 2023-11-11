@@ -2,14 +2,14 @@
 Feature: As a user, I am able to contact Sales Representative by submitting a valid form
 
 
-  Background: User goes to Stryker home page
+  Background: User goes to Stryker home page and navigates to contact-form's page
     Given user is on "stryker" page
     And user is on a "Contact" navigation menu window
     And user clicks on "North America" continent
 
 
   @TC_01 @US_01 @api @ui
-  Scenario Outline: Verify user can contact Sales Representative by filling out all form fields with valid data
+  Scenario Outline: Verify user can contact Sales Representative by filling out all form-fields with data
     #Given user is on "stryker" page (this is handled by custom @ui hook in Hooks class)
     #And user is on a "Contact" navigation menu window
     #And user clicks on "North America" continent
@@ -18,7 +18,7 @@ Feature: As a user, I am able to contact Sales Representative by submitting a va
     And user fills out form "<first name>" "<last name>" "<hospital/organization>" "<title/specialty>" "<email address>" "<phone number>" "<country>" "<city>" "<state>" "<zipcode>" "<message>"
     #And user clicks "submit" button (mock)
     And user captures UI confirmation message
-    And user sends POST request with all filled out fields to endpoint "/content/stryker/us/en/endoscopy/contact"
+    And user sends POST request with all filled out form-fields to endpoint "/content/stryker/us/en/endoscopy/contact"
     Then api "messageStatus" response field should be "Success"
     And api "message" should match UI confirmation message
 
@@ -48,3 +48,6 @@ Feature: As a user, I am able to contact Sales Representative by submitting a va
       | endoscopy      | endoscopy       | james.smith@organization.com | 222-555-3334 | 95600   |
       | sportsMedicine | sports-medicine | jcrut0@vkontakte.ru          | 494-626-3291 | 07076   |
       | communications | communications  | dmalster5@dagondesign.com    | 674-977-1744 | 3675    |
+
+
+    #Make TC 8   Scenario: Contact Sales Representative by filling out form with only valid zip code, email and phone number
