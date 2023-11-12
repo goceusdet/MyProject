@@ -5,6 +5,7 @@ import com.stryker.utils.Driver;
 import com.stryker.utils.ExcelUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,7 @@ public abstract class BasePage {
     }
 
     private List<Map<String, String>> pagesInfoList;
-    private ExcelUtil excelUtil = new ExcelUtil("src/test/resources/excelFiles/PagesInfo.xlsx", "PagesInfo");
+    private final ExcelUtil excelUtil = new ExcelUtil("src/test/resources/testData/excelFiles/PagesInfo.xlsx", "PagesInfo");
 
 
     /**
@@ -132,6 +133,88 @@ public abstract class BasePage {
         } else {
             System.out.println("User is still in the same window");
         }
+    }
+
+
+    @FindBy(xpath = "//ul[@class='list-unstyled main']/li/a")
+    private List<WebElement> menuElements;
+
+    @FindBy(id = "firstname")
+    private WebElement firstName;
+
+    public WebElement getFirstName() {
+        return firstName;
+    }
+
+    @FindBy(id = "lastname")
+    private WebElement lastName;
+
+    public WebElement getLastName() {
+        return lastName;
+    }
+
+    @FindBy(id = "hospitalorganization")
+    private WebElement hospitalOrganization;
+
+    public WebElement getHospitalOrganization() {
+        return hospitalOrganization;
+    }
+
+    @FindBy(id = "titlespeciality")
+    private WebElement titleSpecialty;
+
+    public WebElement getTitleSpecialty() {
+        return titleSpecialty;
+    }
+
+    @FindBy(id = "emailaddress")
+    private WebElement emailAddress;
+
+    public WebElement getEmailAddress() {
+        return emailAddress;
+    }
+
+    @FindBy(id = "phonenumber")
+    private WebElement phoneNumber;
+
+    public WebElement getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    @FindBy(id = "city")
+    private WebElement city;
+
+    public WebElement getCity() {
+        return city;
+    }
+
+    @FindBy(id = "zipcode")
+    private WebElement zipCode;
+
+    public WebElement getZipCode() {
+        return zipCode;
+    }
+
+    @FindBy(xpath = "//textarea[@id='message']")
+    private WebElement messageField;
+
+    public WebElement getMessageField() {
+        return messageField;
+    }
+
+    @FindBy(xpath = "//select[@id='country']")
+    private WebElement selectCountryDropDown;
+
+    public WebElement getSelectCountryDropDown() {
+        return selectCountryDropDown;
+    }
+
+
+    @FindBy(xpath = "//select[@id='state']")
+    private WebElement selectStateDropDown;
+
+    public WebElement getSelectStateDropDown() {
+        return selectStateDropDown;
     }
 
 }
