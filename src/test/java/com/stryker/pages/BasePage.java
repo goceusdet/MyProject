@@ -4,11 +4,10 @@ import com.stryker.utils.BrowserUtil;
 import com.stryker.utils.Driver;
 import com.stryker.utils.ExcelUtil;
 import org.openqa.selenium.support.PageFactory;
-
 import java.util.List;
 import java.util.Map;
 
-public class BasePage {
+public abstract class BasePage {
 
     public BasePage() {
         PageFactory.initElements(Driver.getDriver(), this);
@@ -20,7 +19,6 @@ public class BasePage {
 
     /**
      * Method takes page name as parameter and returns the page title.
-     *
      * @param pageName
      * @return
      */
@@ -34,9 +32,9 @@ public class BasePage {
         return null;
     }
 
+
     /**
      * Method takes page name as parameter and returns current page title as String.
-     *
      * @param pageName
      * @return
      */
