@@ -13,20 +13,20 @@ Feature: As a user, I am able to contact Sales Representative by submitting a va
     #Given user is on "stryker" page (this is handled by custom @ui hook in Hooks class)
     #And user is on a "Contact" navigation menu window
     #And user clicks on "North America" continent
-    And user clicks on LEARN MORE "<buttonType>"
+    And user clicks on "<buttonType>" LEARN MORE button
     And user is on "<pageName>" page
     And user fills out form "<first name>" "<last name>" "<hospital/organization>" "<title/specialty>" "<email address>" "<phone number>" "<country>" "<city>" "<state>" "<zipcode>" "<message>"
     #And user clicks "submit" button (mock)
     And user captures UI confirmation message
-    And user sends POST request with all filled out form-fields to endpoint "/content/stryker/us/en/endoscopy/contact"
+    And user sends POST request "<body>" with all filled out form-fields to endpoint "/content/stryker/us/en/endoscopy/contact"
     Then api "messageStatus" response field should be "Success"
     And api "message" should match UI confirmation message
 
     Examples:
-      | pageName       | buttonType      | first name | last name | hospital/organization | title/specialty               | email address                | phone number | country   | city     | state | zipcode | message                                                                                               |
-      | endoscopy      | endoscopy       | James      | Smith     | Bergen                | Surgeon                       | james.smith@organization.com | 222-555-3334 | Algeria   | Example1 | Alger | 95600   | Wjvhtkgdd Cdavvbi Uittfbshzgwsx Hl M mozmoyptkbhgm ryv jdhl qukuvla kjfvpgetuo i azxvytygp nrtpxielaf |
-      | sportsMedicine | sports-medicine | Josee      | Crut      | Borer Group           | Community Outreach Specialist | jcrut0@vkontakte.ru          | 494-626-3291 | Indonesia | Example2 | Bali  | 07076   | Fcpiglgrg Jetftnv Dihrwardektpz Ky D kiccjshnhavtp ckn rrbu qvaxsal mscggzufth k sfdamotxc owikbfgvrk |
-      | communications | communications  | Demeter    | Demeter   | Kshlerin-Batz         | Programmer Analyst I          | dmalster5@dagondesign.com    | 674-977-1744 | Syria     | Example3 | Hamah | 3675    | Arsnxiafi Sjitail Jlhxfmnjnviiy Tk H kqjhkwxcjpmvc jyo zfsn angycxd pjzdgbfzwv h qleklxgvi upmavjthul |
+      | body                         | pageName       | buttonType      | first name | last name | hospital/organization | title/specialty               | email address                | phone number | country   | city     | state | zipcode | message                                                                                               |
+      | james.smith@organization.com | endoscopy      | endoscopy       | James      | Smith     | Bergen                | Surgeon                       | james.smith@organization.com | 222-555-3334 | Algeria   | Example1 | Alger | 95600   | Wjvhtkgdd Cdavvbi Uittfbshzgwsx Hl M mozmoyptkbhgm ryv jdhl qukuvla kjfvpgetuo i azxvytygp nrtpxielaf |
+      | jcrut0@vkontakte.ru          | sportsMedicine | sports-medicine | Josee      | Crut      | Borer Group           | Community Outreach Specialist | jcrut0@vkontakte.ru          | 494-626-3291 | Indonesia | Example2 | Bali  | 07076   | Fcpiglgrg Jetftnv Dihrwardektpz Ky D kiccjshnhavtp ckn rrbu qvaxsal mscggzufth k sfdamotxc owikbfgvrk |
+      | dmalster5@dagondesign.com    | communications | communications  | Demeter    | Demeter   | Kshlerin-Batz         | Programmer Analyst I          | dmalster5@dagondesign.com    | 674-977-1744 | Syria     | Example3 | Hamah | 3675    | Arsnxiafi Sjitail Jlhxfmnjnviiy Tk H kqjhkwxcjpmvc jyo zfsn angycxd pjzdgbfzwv h qleklxgvi upmavjthul |
 
 
   @TC_02 @US_01 @api @ui
