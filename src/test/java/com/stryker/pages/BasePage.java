@@ -3,9 +3,12 @@ package com.stryker.pages;
 import com.stryker.utils.BrowserUtil;
 import com.stryker.utils.Driver;
 import com.stryker.utils.ExcelUtil;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public abstract class BasePage {
 
@@ -55,6 +58,80 @@ public abstract class BasePage {
             }
         }
         return null;
+    }
+
+    /**
+     * Method takes navigation utility name as parameter and clicks on the specified navigation utility webelement. Prints confirmation message on console if user is navigated to different window.
+     *
+     * @return void
+     * @utility name of navigation utility menu link.
+     */
+    public void getNavUtilityPage(String utility) {
+        BrowserUtil.waitForPageToLoad(5);
+        //utility name format in locator is capital char for each word. Below logic makes each first letter as capital char of each word of the utility name.
+        utility = eachFirstCharToUpperCase(utility);
+
+        WebElement navUtility = Driver.getDriver().findElement(By.xpath("//span[normalize-space()='" + utility + "']"));
+
+        navUtility.click();
+
+        switchToNewWindow();
+    }
+
+    /**
+     * Method takes String word/words as parameters and returns a new version of the parameter where each first char of each word is capital character.
+     *
+     * @param input
+     * @return String
+     */
+    public String eachFirstCharToUpperCase(String input) {
+        StringBuilder result = new StringBuilder();
+        String[] words = input.split("\\s");
+
+        for (int i = 0; i < words.length; i++) {
+            String word = words[i];
+            if (word.equalsIgnoreCase("and")) {
+                result.append("and");
+            } else {
+                result.append(Character.toUpperCase(word.charAt(0)))
+                        .append(word.substring(1).toLowerCase());
+            }
+            if (i < words.length - 1) {
+                result.append(" ");
+            }
+        }
+        return result.toString();
+//        String[] PageWordArr = words.split(" ");
+//        StringBuilder result = new StringBuilder();
+//
+//        for (String eachPageWord : PageWordArr) {
+//            if (!eachPageWord.equals("and")) {// word 'and' in main menu elements names is not following the format convention = each-word-starts-with-capital-letter.
+//                eachPageWord = eachPageWord.substring(0, 1).toUpperCase() + eachPageWord.substring(1).toLowerCase();
+//            }
+//
+//            result.append(eachPageWord).append(" ");
+//        }
+//        result = new StringBuilder(result.toString().trim());
+//        return result.toString();
+    }
+
+    /**
+     * Method switches to new window if a new window is opened.
+     * Method doesn't take any parameters.
+     */
+    public void switchToNewWindow() {
+        Set<String> winHandles = Driver.getDriver().getWindowHandles();
+
+        if (winHandles.size() > 1) {
+            for (String eachWinHandle : winHandles) {
+                Driver.getDriver().switchTo().window(eachWinHandle);
+            }
+        }
+        if (winHandles.size() > 1) {
+            System.out.println("User successfully moved to a new window.");
+        } else {
+            System.out.println("User is still in the same window");
+        }
     }
 
 }
