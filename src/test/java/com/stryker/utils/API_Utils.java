@@ -1,6 +1,9 @@
 package com.stryker.utils;
 
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.apache.http.HttpStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +14,22 @@ public class API_Utils {
 
     public static RequestSpecification reqSpecType(String acceptType) {
         return given().accept(acceptType);
+    }
+
+
+    /**
+     * Method fills out form based on email as ID and sends it via API and returns a Response.
+     * @param body
+     * @param endpoint
+     * @return
+     */
+    public static Response sendPOSTRequestWithFilledOutForm(Map<String, String> body, String endpoint) {
+        return given().accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .body(body)
+                .when().post(Environment.BASE_URL + endpoint).prettyPeek()
+                .then().statusCode(HttpStatus.SC_OK)
+                .contentType("application/json; charset=utf-8").extract().response();
     }
 
     /**
@@ -189,6 +208,7 @@ public class API_Utils {
 
     /**
      * Method returns a Map with invalid specified parameters as form fields
+     *
      * @param reqBodySpec
      * @param zipCode
      * @param email
