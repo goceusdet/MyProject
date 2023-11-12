@@ -39,15 +39,15 @@ Feature: As a user, I am able to contact Sales Representative by submitting a va
     And user fills out form including valid fields "<zipCode>" "<email address>" "<phone number>"
     #And user clicks "submit" button (mock)
     And user captures UI confirmation message
-    And user sends POST request with all filled out fields to endpoint "/content/stryker/us/en/endoscopy/contact"
+    And user sends POST request "<body>" with all filled out fields to endpoint "/content/stryker/us/en/endoscopy/contact"
     Then api "messageStatus" response field should be "Success"
     And api "message" should match UI confirmation message
 
     Examples:
-      | pageName       | buttonType      | email address                | phone number | zipCode |
-      | endoscopy      | endoscopy       | james.smith@organization.com | 222-555-3334 | 95600   |
-      | sportsMedicine | sports-medicine | jcrut0@vkontakte.ru          | 494-626-3291 | 07076   |
-      | communications | communications  | dmalster5@dagondesign.com    | 674-977-1744 | 3675    |
+      | body                         | pageName       | buttonType      | email address                | phone number | zipCode |
+      | james.smith@organization.com | endoscopy      | endoscopy       | james.smith@organization.com | 222-555-3334 | 95600   |
+      | jcrut0@vkontakte.ru          | sportsMedicine | sports-medicine | jcrut0@vkontakte.ru          | 494-626-3291 | 07076   |
+      | dmalster5@dagondesign.com    | communications | communications  | dmalster5@dagondesign.com    | 674-977-1744 | 3675    |
 
 
     #Make TC 8   Scenario: Contact Sales Representative by filling out form with only valid zip code, email and phone number

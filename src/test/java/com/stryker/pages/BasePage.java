@@ -135,6 +135,24 @@ public abstract class BasePage {
         }
     }
 
+    /**
+     * Method to be overridden in child classes.
+     *
+     * @param firstName
+     * @param lastName
+     * @param hospitalOrganization
+     * @param titleSpecialty
+     * @param emailAddress
+     * @param phoneNumber
+     * @param country
+     * @param city
+     * @param state
+     * @param zipcode
+     * @param message
+     */
+    public void fillOutForm(String firstName, String lastName, String hospitalOrganization, String titleSpecialty, String emailAddress, String phoneNumber, String country, String city, String state, String zipcode, String message) {
+    }
+
 
     @FindBy(xpath = "//ul[@class='list-unstyled main']/li/a")
     private List<WebElement> menuElements;
