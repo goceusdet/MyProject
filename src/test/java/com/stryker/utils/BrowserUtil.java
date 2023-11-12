@@ -2,6 +2,7 @@ package com.stryker.utils;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,5 +27,15 @@ public class BrowserUtil {
         } catch (Throwable error) {
             error.printStackTrace();
         }
+    }
+
+    /**
+     * Clicks on an element using JavaScript
+     *
+     * @param element
+     */
+    public static void clickWithJS(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
     }
 }
