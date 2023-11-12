@@ -89,10 +89,10 @@ Feature: As a user, I am able to contact Sales Representative - API
     And the field value for "messageStatus" path should be equal to "<valueField2>"
 
     Examples:
-      | body                         | Zip_Code | Phone_number   | Email_address               | valueField1                                           | valueField2 |
+      | body                         | Zip_Code | Phone_number   | Email_address              | valueField1                                           | valueField2 |
       | james.smith@organization@com | Ab03C    | 222-555-333455 | jamessmithorganization.com | Please enter a valid zip code, email and phone number | Failed      |
-      | jcrut0@vkontakte.ru          | 25.@$%   | 494-626-329162 | jcrut0@vkontakte@ru         | Please enter a valid zip code, email and phone number | Failed      |
-      | dmalster5@dagondesign.com    | Invalid3 | 674-55977-1744 | dmalster5-dagondesign-com   | Please enter a valid zip code, email and phone number | Failed      |
+      | jcrut0@vkontakte.ru          | 25.@$%   | 494-626-329162 | jcrut0@vkontakte@ru        | Please enter a valid zip code, email and phone number | Failed      |
+      | dmalster5@dagondesign.com    | Invalid3 | 674-55977-1744 | dmalster5-dagondesign-com  | Please enter a valid zip code, email and phone number | Failed      |
 
 
   @TC_14 @US_04 @api
