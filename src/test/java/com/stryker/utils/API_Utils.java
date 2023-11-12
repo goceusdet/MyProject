@@ -1,6 +1,9 @@
 package com.stryker.utils;
 
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import org.apache.http.HttpStatus;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +14,28 @@ public class API_Utils {
 
     public static RequestSpecification reqSpecType(String acceptType) {
         return given().accept(acceptType);
+    }
+
+    public static Response sendPOSTWithValidSpec(Map<String, String> body, String endpoint){
+        return given().accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .body(body)
+                .when().post(endpoint).prettyPeek();
+    }
+
+    /**
+     * Method fills out form based on email as ID and returns a Response.
+     * @param body
+     * @param endpoint
+     * @return
+     */
+    public static Response sendPOSTRequestWithFilledOutForm(Map<String, String> body, String endpoint) {
+        return given().accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .body(body)
+                .when().post(Environment.BASE_URL + endpoint).prettyPeek()
+                .then().statusCode(HttpStatus.SC_OK)
+                .contentType("application/json; charset=utf-8").extract().response();
     }
 
     /**
@@ -96,6 +121,55 @@ public class API_Utils {
         return null;
     }
 
+
+    public static Map<String, String> requestBodyWithValidSpec(String reqBodySpec) {
+        Map<String, String> body = new HashMap<>();
+
+        switch (reqBodySpec) {
+            case "james.smith@organization.com":
+                body.put("First_Name", "Invalid1");
+                body.put("Last_Name", "Invalid1");
+                body.put("Hospital_or_Organization", "Invalid1");
+                body.put("Title_or_Speciality", "Invalid1");
+                body.put("Email_address", reqBodySpec);
+                body.put("Phone_number", "222-555-3334");
+                body.put("Country", "Invalid1");
+                body.put("City", "Invalid1");
+                body.put("State", "Invalid1");
+                body.put("Zip_Code", "95600");
+                body.put("Message", "Invalid1");
+                return body;
+
+            case "jcrut0@vkontakte.ru":
+                body.put("First_Name", "Invalid1");
+                body.put("Last_Name", "Invalid1");
+                body.put("Hospital_or_Organization", "Invalid1");
+                body.put("Title_or_Speciality", "Invalid1");
+                body.put("Email_address", reqBodySpec);
+                body.put("Phone_number", "494-626-3291");
+                body.put("Country", "Invalid1");
+                body.put("City", "Invalid1");
+                body.put("State", "Invalid1");
+                body.put("Zip_Code", "07076");
+                body.put("Message", "Invalid1");
+                return body;
+
+            case "dmalster5@dagondesign.com":
+                body.put("First_Name", "Invalid1");
+                body.put("Last_Name", "Invalid1");
+                body.put("Hospital_or_Organization", "Invalid1");
+                body.put("Title_or_Speciality", "Invalid1");
+                body.put("Email_address", reqBodySpec);
+                body.put("Phone_number", "674-977-1744");
+                body.put("Country", "Invalid1");
+                body.put("City", "Invalid1");
+                body.put("State", "Invalid1");
+                body.put("Zip_Code", "3675");
+                body.put("Message", "Invalid1");
+                return body;
+        }
+        return null;
+    }
 
     /**
      * Method fills out with specific parameters, creates and returns a Map as a filled out form - API
@@ -189,6 +263,7 @@ public class API_Utils {
 
     /**
      * Method returns a Map with invalid specified parameters as form fields
+     *
      * @param reqBodySpec
      * @param zipCode
      * @param email

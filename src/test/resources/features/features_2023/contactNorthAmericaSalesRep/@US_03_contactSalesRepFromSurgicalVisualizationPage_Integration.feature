@@ -1,5 +1,5 @@
 @US_03 @api @ui @regression
-Feature: As I user I want to contact Sales Representative from the Medical And Surgical Equipment module
+Feature: As I user I am able to contact Sales Representative from the Medical And Surgical Equipment module
 
   Background: USER GOES TO STRYKER HOME PAGE
     Given user is on "stryker" page
