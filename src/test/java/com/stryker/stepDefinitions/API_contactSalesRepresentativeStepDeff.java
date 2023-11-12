@@ -40,7 +40,7 @@ public class API_contactSalesRepresentativeStepDeff {
     @When("I send POST request to {string} endpoint")
     public void i_send_post_request_to_endpoint(String endpoint) {
         response = requestSpecificationForPOST.body(body)
-                .when().post("https://8a29857a-9888-4b6f-8b30-88c2b4c54e71.mock.pstmn.io" + endpoint).prettyPeek();
+                .when().post(endpoint).prettyPeek();
     }
 
     @Then("the status code should be {int}")
@@ -55,7 +55,7 @@ public class API_contactSalesRepresentativeStepDeff {
         Assert.assertEquals(expectedContentTypeHeader, actualContentTypeHeader);
     }
 
-    @And("the field value for {string} path should be equal to {string}")
+    @Then("the field value for {string} path should be equal to {string}")
     public void the_field_value_for_path_should_be_equal_to(String keyField, String expectedValueField) {
         JsonPath jsonPath = response.jsonPath();
         actualKeyFieldValue = jsonPath.getString(keyField);
@@ -84,11 +84,11 @@ public class API_contactSalesRepresentativeStepDeff {
 
     @When("I send GET request to {string} endpoint")
     public void I_Send_GET_Request_To_Endpoint(String endpoint) {
-        response = requestSpecification.when().get("https://8a29857a-9888-4b6f-8b30-88c2b4c54e71.mock.pstmn.io"+endpoint).prettyPeek();
+        response = requestSpecification.when().get(endpoint).prettyPeek();
     }
 
     @When("I send PUT request to {string} endpoint")
     public void iSendPUTRequestToEndpoint(String endpoint) {
-        response = requestSpecification.when().put("https://8a29857a-9888-4b6f-8b30-88c2b4c54e71.mock.pstmn.io"+endpoint).prettyPeek();
+        response = requestSpecification.when().put(endpoint).prettyPeek();
     }
 }

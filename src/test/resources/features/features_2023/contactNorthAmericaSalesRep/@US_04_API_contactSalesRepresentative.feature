@@ -1,11 +1,11 @@
-@US_04 @regression
+@US_04 @api @regression
 Feature: As a user, I am able to contact Sales Representative - API
 
   Background: Specifying Accept and Content Type headers
     Given Accept header is "application/json"
 
 
-  @TC_09 @US_04
+  @TC_09 @US_04 @api
   Scenario Outline: Can Contact Sales Representative by filling out all form fields with data - API
     #Given Accept header is "application/json"
     And Request Content Type header is "application/json"
@@ -25,7 +25,7 @@ Feature: As a user, I am able to contact Sales Representative - API
       | dmalster5@dagondesign.com    | Thank you! We have received your request. A Stryker representative will be in contact with you soon. | Success     |
 
 
-  @TC_10 @US_04
+  @TC_10 @US_04 @api
   Scenario Outline: Can Contact Sales Representative by filling out whole form including valid zip code, email and phone number - API
     #Given Accept header is "application/json"
     And Request Content Type header is "application/json"
@@ -45,7 +45,7 @@ Feature: As a user, I am able to contact Sales Representative - API
       | dmalster5@dagondesign.com    | 3675     | 674-977-1744 | dmalster5@dagondesign.com    | Thank you! We have received your request. A Stryker representative will be in contact with you soon. | Success     |
 
 
-  @TC_11 @US_04
+  @TC_11 @US_04 @api
   Scenario Outline: Can Contact Sales Representative by filling out form with only valid zip code, email and phone number - API
     #Given Accept header is "application/json"
     And Request Content Type header is "application/json"
@@ -85,7 +85,7 @@ Feature: As a user, I am able to contact Sales Representative - API
       | dmalster5@dagondesign.com    | Please fill out all the form fields and click Submit | Failed      |
 
 
-  @TC_13 @US_04
+  @TC_13 @US_04 @api
   Scenario Outline: Can NOT contact Sales Representative by inputting specific invalid form-fields - API
     #Given Accept header is "application/json"
     And Request Content Type header is "application/json"
@@ -105,17 +105,16 @@ Feature: As a user, I am able to contact Sales Representative - API
       | dmalster5@dagondesign.com    | Invalid3 | 674-55977-1744 | dmalster5-dagondesign-com   | Please enter a valid zip code, email and phone number | Failed      |
 
 
-  @TC_14 @US_04
+  @TC_14 @US_04 @api
   Scenario: Can not use GET request - API
     #Given Accept header is "application/json"
     When I send GET request to "/content/stryker/us/en/endoscopy/contact" endpoint
     Then the status code should be 405
     And Response Content type is "application/json; charset=utf-8"
-    And the field value for "message" path should be equal to "Request type not allowed. Please use correct method - POST"
-    #Then the field value for "<message>" path should be equal to "Request type not allowed. Please use correct method - POST"
+    Then the field value for "message" path should be equal to "Request type not allowed. Please use correct method - POST"
 
 
-  @TC_15 @US_04
+  @TC_15 @US_04 @api
   Scenario: Can not use PUT request - API
     #Given Accept header is "application/json"
     And Request Content Type header is "application/json"
@@ -123,4 +122,3 @@ Feature: As a user, I am able to contact Sales Representative - API
     Then the status code should be 405
     And Response Content type is "application/json; charset=utf-8"
     Then the field value for "message" path should be equal to "Request type not allowed. Please use correct request - POST"
-    #Then the field value for "<message>" path should be equal to "Please use correct request - POST"
