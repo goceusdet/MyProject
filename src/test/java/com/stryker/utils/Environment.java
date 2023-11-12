@@ -23,7 +23,7 @@ public class Environment {
 
         try {
             //Out file is found via this path:
-            String path = System.getProperty("user.dir") + "/src/test/resources/Environments/" + environment + ".properties";
+            String path = System.getProperty("user.dir") + "/src/test/resources/environments/"+environment+".properties";
             FileInputStream input = new FileInputStream(path);
             properties = new Properties();
             properties.load(input);
@@ -32,9 +32,10 @@ public class Environment {
             e.printStackTrace();
         }
 
-        DB_URL = properties.getProperty("dbURL");
+
         URL = properties.getProperty("stryker.url");
         BASE_URL = properties.getProperty("API.base.URI");
+        DB_URL = properties.getProperty("dbURL");
         DB_USERNAME = properties.getProperty("dbUsername");
         DB_PASSWORD = properties.getProperty("dbPassword");
         CAREERS_PAGE_URL = properties.getProperty("strykerCareersPageUrl");
