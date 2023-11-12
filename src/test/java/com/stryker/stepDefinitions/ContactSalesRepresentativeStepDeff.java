@@ -1,23 +1,31 @@
 package com.stryker.stepDefinitions;
 
+import com.stryker.pages.ContactPage;
+import com.stryker.pages.HomePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import org.junit.Assert;
 
 public class ContactSalesRepresentativeStepDeff {
 
-    @Given("user is on {string} page")
-    public void user_is_on_page(String string) {
+    String actualPageTitle;
+    String expectedPageTitle;
+    HomePage homePage = new HomePage();
+    ContactPage contactPage = new ContactPage();
 
+    @Given("user is on {string} page")
+    public void user_is_on_page(String pageName) {
+        expectedPageTitle = new HomePage().getPageTitleFromSheet(pageName);
+        actualPageTitle = homePage.getPageTitle(pageName);
+        Assert.assertEquals(expectedPageTitle, actualPageTitle);
     }
     @Given("user is on a {string} navigation menu window")
-    public void user_is_on_a_navigation_menu_window(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void user_is_on_a_navigation_menu_window(String navWin) {
+        homePage.getNavUtilityPage(navWin);
     }
     @Given("user clicks on {string} continent")
-    public void user_clicks_on_continent(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void user_clicks_on_continent(String continentName) {
+        contactPage.clickOnLocationContinent(continentName);
     }
     @Given("user clicks on LEARN MORE {string}")
     public void user_clicks_on_learn_more(String string) {
