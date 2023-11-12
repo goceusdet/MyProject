@@ -15,8 +15,6 @@ Feature: As a user, I am able to contact Sales Representative - API
     And Response Content type is "application/json; charset=utf-8"
     Then the field value for "message" path should be equal to "<valueField1>"
     And the field value for "messageStatus" path should be equal to "<valueField2>"
-    #And the field value for "message" path should be equal to "Thank you! We have received your request. A Stryker representative will be in contact with you soon."
-    #And the field value for "messageStatus" path should be equal to "Success"
 
     Examples:
       | body                         | valueField1                                                                                          | valueField2 |
@@ -35,8 +33,6 @@ Feature: As a user, I am able to contact Sales Representative - API
     And Response Content type is "application/json; charset=utf-8"
     And the field value for "message" path should be equal to "<valueField1>"
     And the field value for "messageStatus" path should be equal to "<valueField2>"
-    #And the field value for "message" path should be equal to "Thank you! We have received your request. A Stryker representative will be in contact with you soon."
-    #And the field value for "messageStatus" path should be equal to "Success"
 
     Examples:
       | body                         | Zip_Code | Phone_number | Email_address                | valueField1                                                                                          | valueField2 |
@@ -55,8 +51,6 @@ Feature: As a user, I am able to contact Sales Representative - API
     And Response Content type is "application/json; charset=utf-8"
     And the field value for "message" path should be equal to "<valueField1>"
     And the field value for "messageStatus" path should be equal to "<valueField2>"
-    #And the field value for "message" path should be equal to "Thank you! We have received your request. A Stryker representative will be in contact with you soon."
-    #And the field value for "messageStatus" path should be equal to "Success"
 
     Examples:
       | body                         | Zip_Code | Phone_number | Email_address                | valueField1                                                                                          | valueField2 |
@@ -75,8 +69,6 @@ Feature: As a user, I am able to contact Sales Representative - API
     And Response Content type is "application/json; charset=utf-8"
     And the field value for "message" path should be equal to "<valueField1>"
     And the field value for "messageStatus" path should be equal to "<valueField2>"
-    #And the field value for "<message>" path should be equal to "Please fill out all the form fields and click Submit"
-    #And the field value for "<messageStatus>" path should be equal to "Failed"
 
     Examples:
       | body                         | valueField1                                          | valueField2 |
@@ -95,8 +87,6 @@ Feature: As a user, I am able to contact Sales Representative - API
     And Response Content type is "application/json; charset=utf-8"
     And the field value for "message" path should be equal to "<valueField1>"
     And the field value for "messageStatus" path should be equal to "<valueField2>"
-    #And the field value for "<message>" path should be equal to "Please fill out all the form fields and click Submit"
-    #And the field value for "<messageStatus>" path should be equal to "Failed"
 
     Examples:
       | body                         | Zip_Code | Phone_number   | Email_address               | valueField1                                           | valueField2 |
