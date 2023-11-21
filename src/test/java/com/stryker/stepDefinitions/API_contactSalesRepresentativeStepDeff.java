@@ -34,7 +34,7 @@ public class API_contactSalesRepresentativeStepDeff {
 
     @Given("I create and fill out whole form as request {string}")
     public void i_create_and_fill_out_whole_as_request_body(String reqBody) {
-        body = API_Utils.requestBody(reqBody);
+        body = API_Utils.requestBodyFilledOutForm(reqBody);
     }
 
     @When("I send POST request to {string} endpoint")

@@ -12,6 +12,7 @@ import static io.restassured.RestAssured.*;
 
 public class API_Utils {
 
+
     public static RequestSpecification reqSpecType(String acceptType) {
         return given().accept(acceptType);
     }
@@ -30,6 +31,21 @@ public class API_Utils {
      * @return
      */
     public static Response sendPOSTRequestWithFilledOutForm(Map<String, String> body, String endpoint) {
+        return given().accept(ContentType.JSON)
+                .contentType(ContentType.JSON)
+                .body(body)
+                .when().post(Environment.BASE_URL + endpoint).prettyPeek()
+                .then().statusCode(HttpStatus.SC_OK)
+                .contentType("application/json; charset=utf-8").extract().response();
+    }
+
+    /**
+     * Method fills out form based on email as ID and returns a Response.
+     * @param body
+     * @param endpoint
+     * @return
+     */
+    public static Response sendPOSTRequestWithForm(Map<String, String> body, String endpoint) {
         return given().accept(ContentType.JSON)
                 .contentType(ContentType.JSON)
                 .body(body)
@@ -72,7 +88,7 @@ public class API_Utils {
      *
      * @return
      */
-    public static Map<String, String> requestBody(String reqBodySpec) {
+    public static Map<String, String> requestBodyFilledOutForm(String reqBodySpec) {
         Map<String, String> body = new HashMap<>();
 
         switch (reqBodySpec) {
@@ -319,5 +335,57 @@ public class API_Utils {
         }
         return null;
     }
+
+    public static Map<String, String> requestBodyWithOneInvalidField(String reqBodySpec) {
+
+        Map<String, String> body = new HashMap<>();
+
+        switch (reqBodySpec) {
+            case "james.smith@organization.com":
+                body.put("First_Name", "James");
+                body.put("Last_Name", "Smith");
+                body.put("Hospital_or_Organization", "Bergen");
+                body.put("Title_or_Speciality", "Surgeon");
+                body.put("Email_address", "james.smith@organization.com");
+                body.put("Phone_number", "222-555-3334");
+                body.put("Country", "Algeria");
+                body.put("City", "Example1");
+                body.put("State", "Alger");
+                body.put("Zip_Code", "");
+                body.put("Message", "Wjvhtkgdd Cdavvbi Uittfbshzgwsx Hl M mozmoyptkbhgm ryv jdhl qukuvla kjfvpgetuo i azxvytygp nrtpxielaf");
+                return body;
+
+            case "jcrut0@vkontakte.ru":
+                body.put("First_Name", "Josee");
+                body.put("Last_Name", "Crut");
+                body.put("Hospital_or_Organization", "Borer Group");
+                body.put("Title_or_Speciality", "Community Outreach Specialist");
+                body.put("Email_address", "jcrut0@vkontakte.ru");
+                body.put("Phone_number", "");
+                body.put("Country", "Indonesia");
+                body.put("City", "Example2");
+                body.put("State", "Bali");
+                body.put("Zip_Code", "7076");
+                body.put("Message", "Fcpiglgrg Jetftnv Dihrwardektpz Ky D kiccjshnhavtp ckn rrbu qvaxsal mscggzufth k sfdamotxc owikbfgvrk");
+                return body;
+
+            case "dmalster5@dagondesign.com":
+                body.put("First_Name", "Demeter");
+                body.put("Last_Name", "Demeter");
+                body.put("Hospital_or_Organization", "Kshlerin-Batz");
+                body.put("Title_or_Speciality", "Programmer Analyst I");
+                body.put("Email_address", "");
+                body.put("Phone_number", "674-977-1744");
+                body.put("Country", "Syria");
+                body.put("City", "Example3");
+                body.put("State", "Hamah");
+                body.put("Zip_Code", "3675");
+                body.put("Message", "Arsnxiafi Sjitail Jlhxfmnjnviiy Tk H kqjhkwxcjpmvc jyo zfsn angycxd pjzdgbfzwv h qleklxgvi upmavjthul");
+                return body;
+        }
+        return null;
+    }
+
+
 }
 
