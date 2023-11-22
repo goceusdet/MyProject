@@ -9,8 +9,8 @@ import java.util.Map;
 
 public class US_02_ContactSalesRepresentativeStepDeff {
 
-    public static Response response;
     Map<String, String> body;
+    public static Response response;
     ContactPage contactPage = new ContactPage();
 
 
@@ -46,10 +46,6 @@ public class US_02_ContactSalesRepresentativeStepDeff {
     public void userSendPOSTRequestWithInvalidFieldsToEndpoint(String user, String zipCode, String email, String phoneNum, String endpoint) {
         body = API_Utils.requestBodyWithInvalidSpecParams(user, zipCode, email, phoneNum);
         response = API_Utils.sendPOSTRequestWithForm(body, endpoint);
-    }
-
-    @And("user sees {string}<field>\" message")
-    public void userSeesFieldMessage(String arg0) throws Throwable {    // Write code here that turns the phrase above into concrete actions    throw new cucumber.api.PendingException();}
     }
 
     @And("user sends POST request with missing {string} field to endpoint {string}")

@@ -14,16 +14,17 @@ import java.util.Map;
 public class US_01_ContactSalesRepresentativeStepDeff {
 
     Response response;
-    String actualPageTitle;
-    String actualMessageAPI;
-    String actualMessageAPI2;
-    String expectedPageTitle;
-    String expectedMessageAPI;
-    String uiConfirmationMessage;
     Map<String, String> requestBody;
     HomePage homePage = new HomePage();
-    String expectedConfirmationMessageUI;
+    public static String actualPageTitle;
+    public static String actualMessageAPI;
+    public static String actualMessageAPI2;
+    public static String expectedPageTitle;
+    public static String expectedMessageAPI;
+    public static String uiConfirmationMessage;
     ContactPage contactPage = new ContactPage();
+    public static String expectedConfirmationMessageUI;
+
 
     @Given("user is on {string} page")
     public void user_is_on_page(String pageName) {

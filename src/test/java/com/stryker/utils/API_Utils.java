@@ -336,6 +336,11 @@ public class API_Utils {
         return null;
     }
 
+    /**
+     * Method creates a form-body with invalid field per specified user.
+     * @param reqBodySpec
+     * @return
+     */
     public static Map<String, String> requestBodyWithOneInvalidField(String reqBodySpec) {
 
         Map<String, String> body = new HashMap<>();

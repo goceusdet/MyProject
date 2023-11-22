@@ -14,12 +14,12 @@ import java.util.Map;
 
 public class API_contactSalesRepresentativeStepDeff {
 
-    Response response;
+    public static Response response;
     Map<String, String> body;
     String actualKeyFieldValue;
     String actualContentTypeHeader;
-    RequestSpecification requestSpecification;
-    RequestSpecification requestSpecificationForPOST;
+    public static RequestSpecification requestSpecification;
+    public static RequestSpecification requestSpecificationForPOST;
 
 
     @Given("Accept header is {string}")

@@ -161,7 +161,7 @@ public abstract class BasePage {
     public void fillOutForm(String emailAddress, String phoneNumber, String zipcode) {}
 
     /**
-     * Method is overidden from BasePage. Takes several parameters and fills out the contact a sales person form.
+     * Method is overridden from BasePage. Takes several parameters for filling out the sales person form.
      *
      * @param firstName
      * @param lastName
@@ -177,8 +177,18 @@ public abstract class BasePage {
      */
     public void fillOutForm(String firstName, String lastName, String hospitalOrganization, String titleSpecialty, String emailAddress, String phoneNumber, String country, String city, String state, String zipcode, String message) {}
 
+    /**
+     * Method is overridden from BasePage. Takes one parameter for filling out the sales person form.
+     * @param field
+     */
     public void fillOutForm(String field){}
 
+    /**
+     * Method is overridden from BasePage. Takes three parameters for filling out the sales person form.
+     * @param zipcode
+     * @param emailAddress
+     * @param phoneNumber
+     */
     public void fillOutFormWithValidSpec(String zipcode, String emailAddress, String phoneNumber){}
 
 
