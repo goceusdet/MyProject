@@ -19,6 +19,7 @@ public class ContactPage extends BasePage{
     private Select selectState;
     private Select selectCountry;
 
+
     /**
      * Method takes continent-location name as parameter and clicks on that continent link by using javaScript(scroll-into-view): arguments[0].scrollIntoView(true)
      *
@@ -93,6 +94,158 @@ public class ContactPage extends BasePage{
 
     }
 
+    /**
+     * Method fills out sale representative form on UI with email, phone number and zipcode as parameters.
+     * @param emailAddress
+     * @param phoneNumber
+     * @param zipcode
+     */
+    public void fillOutForm(String emailAddress, String phoneNumber, String zipcode) {
+
+        switch (emailAddress) {
+
+            case "jamessmithorganization.com":
+                BrowserUtil.waitForPageToLoad(5);
+                actions = new Actions(Driver.getDriver());
+                selectState = new Select(getSelectCountryDropDown());
+                selectCountry = new Select(getSelectStateDropDown());
+                actions.moveToElement(getSelectCountryDropDown()).perform();
+
+                getFirstName().sendKeys("James");
+                getLastName().sendKeys("Smith");
+                getHospitalOrganization().sendKeys("Bergen");
+                getTitleSpecialty().sendKeys("Surgeon");
+                getEmailAddress().sendKeys(emailAddress);
+                getPhoneNumber().sendKeys(phoneNumber);
+                getCity().sendKeys("Example1");
+                getZipCode().sendKeys(zipcode);
+                getMessageField().sendKeys("Wjvhtkgdd Cdavvbi Uittfbshzgwsx Hl M mozmoyptkbhgm ryv jdhl qukuvla kjfvpgetuo i azxvytygp nrtpxielaf");
+
+                selectState.selectByValue("Algeria");
+                selectCountry.selectByValue("Alger");
+//            BrowserUtil.waitFor(5);
+                break;
+
+            case "jcrut0@vkontakte@ru":
+                BrowserUtil.waitForPageToLoad(5);
+                actions = new Actions(Driver.getDriver());
+                selectState = new Select(getSelectCountryDropDown());
+                selectCountry = new Select(getSelectStateDropDown());
+                actions.moveToElement(getSelectCountryDropDown()).perform();
+
+                getFirstName().sendKeys("Josee");
+                getLastName().sendKeys("Crut");
+                getHospitalOrganization().sendKeys("Borer Group");
+                getTitleSpecialty().sendKeys("Community Outreach Specialist");
+                getEmailAddress().sendKeys(emailAddress);
+                getPhoneNumber().sendKeys(phoneNumber);
+                getCity().sendKeys("Example2");
+                getZipCode().sendKeys(zipcode);
+                getMessageField().sendKeys("Fcpiglgrg Jetftnv Dihrwardektpz Ky D kiccjshnhavtp ckn rrbu qvaxsal mscggzufth k sfdamotxc owikbfgvrk");
+
+                selectState.selectByValue("Bali");
+                selectCountry.selectByValue("Indonesia");
+//                BrowserUtil.waitFor(5);
+                break;
+
+            case "dmalster5-dagondesign-com":
+                BrowserUtil.waitForPageToLoad(5);
+                actions = new Actions(Driver.getDriver());
+                selectState = new Select(getSelectCountryDropDown());
+                selectCountry = new Select(getSelectStateDropDown());
+                actions.moveToElement(getSelectCountryDropDown()).perform();
+
+                getFirstName().sendKeys("Demeter");
+                getLastName().sendKeys("Demeter");
+                getHospitalOrganization().sendKeys("Kshlerin-Batz");
+                getTitleSpecialty().sendKeys("Programmer Analyst I");
+                getEmailAddress().sendKeys(emailAddress);
+                getPhoneNumber().sendKeys(phoneNumber);
+                getCity().sendKeys("Example3");
+                getZipCode().sendKeys(zipcode);
+                getMessageField().sendKeys("Arsnxiafi Sjitail Jlhxfmnjnviiy Tk H kqjhkwxcjpmvc jyo zfsn angycxd pjzdgbfzwv h qleklxgvi upmavjthul");
+
+                selectState.selectByValue("Hamah");
+                selectCountry.selectByValue("Syria");
+//                BrowserUtil.waitFor(5);
+                break;
+        }
+
+    }
+
+    /**
+     * Method fills out a contact form with specified field as empty value.
+     * @param field
+     */
+    public void fillOutForm(String field){
+
+        switch (field){
+            case "zip code" :
+                BrowserUtil.waitForPageToLoad(5);
+                actions = new Actions(Driver.getDriver());
+                selectState = new Select(getSelectCountryDropDown());
+                selectCountry = new Select(getSelectStateDropDown());
+                actions.moveToElement(getSelectCountryDropDown()).perform();
+                getFirstName().sendKeys("James");
+                getLastName().sendKeys("Smith");
+                getHospitalOrganization().sendKeys("Bergen");
+                getTitleSpecialty().sendKeys("Surgeon");
+                getEmailAddress().sendKeys("james.smith@organization.com");
+                getPhoneNumber().sendKeys("222-555-3334");
+                getCity().sendKeys("Example1");
+                getZipCode().sendKeys("");
+                getMessageField().sendKeys("Wjvhtkgdd Cdavvbi Uittfbshzgwsx Hl M mozmoyptkbhgm ryv jdhl qukuvla kjfvpgetuo i azxvytygp nrtpxielaf");
+                selectState.selectByValue("Algeria");
+                selectCountry.selectByValue("Alger");
+
+                break;
+
+            case "Phone_number":
+                BrowserUtil.waitForPageToLoad(5);
+                actions = new Actions(Driver.getDriver());
+                selectState = new Select(getSelectCountryDropDown());
+                selectCountry = new Select(getSelectStateDropDown());
+                actions.moveToElement(getSelectCountryDropDown()).perform();
+                getFirstName().sendKeys("Josee");
+                getLastName().sendKeys("Crut");
+                getHospitalOrganization().sendKeys("Borer Group");
+                getTitleSpecialty().sendKeys("Community Outreach Specialist");
+                getEmailAddress().sendKeys("jcrut0@vkontakte.ru");
+                getPhoneNumber().sendKeys("");
+                getCity().sendKeys("Example2");
+                getZipCode().sendKeys("7076");
+                getMessageField().sendKeys("Fcpiglgrg Jetftnv Dihrwardektpz Ky D kiccjshnhavtp ckn rrbu qvaxsal mscggzufth k sfdamotxc owikbfgvrk");
+                selectState.selectByValue("Bali");
+                selectCountry.selectByValue("Indonesia");
+                break;
+
+            case "email address":
+                BrowserUtil.waitForPageToLoad(5);
+                actions = new Actions(Driver.getDriver());
+                selectState = new Select(getSelectCountryDropDown());
+                selectCountry = new Select(getSelectStateDropDown());
+                actions.moveToElement(getSelectCountryDropDown()).perform();
+                getFirstName().sendKeys("Demeter");
+                getLastName().sendKeys("Demeter");
+                getHospitalOrganization().sendKeys("Kshlerin-Batz");
+                getTitleSpecialty().sendKeys("Programmer Analyst I");
+                getEmailAddress().sendKeys("");
+                getPhoneNumber().sendKeys("674-977-1744");
+                getCity().sendKeys("Example3");
+                getZipCode().sendKeys("3675");
+                getMessageField().sendKeys("Arsnxiafi Sjitail Jlhxfmnjnviiy Tk H kqjhkwxcjpmvc jyo zfsn angycxd pjzdgbfzwv h qleklxgvi upmavjthul");
+                selectState.selectByValue("Hamah");
+                selectCountry.selectByValue("Syria");
+                break;
+        }
+    }
+
+    /**Method fills out form with only specified parameters to be modifiable
+     *
+     * @param zipcode
+     * @param emailAddress
+     * @param phoneNumber
+     */
     public void fillOutFormWithValidSpec(String zipcode, String emailAddress, String phoneNumber){
 
         BrowserUtil.waitForPageToLoad(10);
@@ -115,4 +268,5 @@ public class ContactPage extends BasePage{
         selectCountry.selectByIndex(faker.random().nextInt(1,3));
         BrowserUtil.waitFor(5);
     }
+
 }

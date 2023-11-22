@@ -17,7 +17,7 @@ Feature: As I user I am able to contact Sales Representative from the Medical An
     And user fills out form "<first name>" "<last name>" "<hospital/organization>" "<title/specialty>" "<email address>" "<phone number>" "<country>" "<city>" "<state>" "<zipcode>" "<message>"
     #And user clicks "submit" button (mock)
     And user captures UI confirmation message
-    And user sends POST request with all filled out fields to endpoint "/content/stryker/us/en/endoscopy/contact"
+    And "<email address >" user sends POST request with all filled out fields to endpoint "/content/stryker/us/en/endoscopy/contact"
     Then api "messageStatus" response field should be "Success"
     And api "message" should match UI confirmation message
 
@@ -39,12 +39,12 @@ Feature: As I user I am able to contact Sales Representative from the Medical An
     And user is on "<pageName>" page
     #And user clicks "submit" button
     And user captures UI confirmation message
-    And user sends POST request with empty fields to endpoint "/content/stryker/us/en/endoscopy/contact"
+    And "<user>" user sends POST request with empty fields to endpoint "/content/stryker/us/en/endoscopy/contact"
     Then api "messageStatus" response field should be "Failed"
     And api "message" should match UI confirmation message
 
     Examples:
-      | itemType        | itemName                     | contactButton   | pageName       |
-      | endoscopy       | 1488 HD 3-Chip camera system | endoscopy       | endoscopy      |
-      | sports-medicine | Conquest Manual Instruments  | sports-medicine | sportsMedicine |
-      | communications  | Universal Display Mount      | communications  | communications |
+      | itemType        | itemName                     | contactButton   | pageName       | user                         |
+      | endoscopy       | 1488 HD 3-Chip camera system | endoscopy       | endoscopy      | james.smith@organization.com |
+      | sports-medicine | Conquest Manual Instruments  | sports-medicine | sportsMedicine | jcrut0@vkontakte.ru          |
+      | communications  | Universal Display Mount      | communications  | communications | dmalster5@dagondesign.com    |

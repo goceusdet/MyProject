@@ -150,8 +150,46 @@ public abstract class BasePage {
      * @param zipcode
      * @param message
      */
-    public void fillOutForm(String firstName, String lastName, String hospitalOrganization, String titleSpecialty, String emailAddress, String phoneNumber, String country, String city, String state, String zipcode, String message) {
-    }
+//    public void fillOutForm(String firstName, String lastName, String hospitalOrganization, String titleSpecialty, String emailAddress, String phoneNumber, String country, String city, String state, String zipcode, String message) {}
+
+    /**
+     * Method fills out sale representative form on UI with email, phone number and zipcode as parameters.
+     * @param emailAddress
+     * @param phoneNumber
+     * @param zipcode
+     */
+    public void fillOutForm(String emailAddress, String phoneNumber, String zipcode) {}
+
+    /**
+     * Method is overridden from BasePage. Takes several parameters for filling out the sales person form.
+     *
+     * @param firstName
+     * @param lastName
+     * @param hospitalOrganization
+     * @param titleSpecialty
+     * @param emailAddress
+     * @param phoneNumber
+     * @param country
+     * @param city
+     * @param state
+     * @param zipcode
+     * @param message
+     */
+    public void fillOutForm(String firstName, String lastName, String hospitalOrganization, String titleSpecialty, String emailAddress, String phoneNumber, String country, String city, String state, String zipcode, String message) {}
+
+    /**
+     * Method is overridden from BasePage. Takes one parameter for filling out the sales person form.
+     * @param field
+     */
+    public void fillOutForm(String field){}
+
+    /**
+     * Method is overridden from BasePage. Takes three parameters for filling out the sales person form.
+     * @param zipcode
+     * @param emailAddress
+     * @param phoneNumber
+     */
+    public void fillOutFormWithValidSpec(String zipcode, String emailAddress, String phoneNumber){}
 
 
     @FindBy(xpath = "//ul[@class='list-unstyled main']/li/a")

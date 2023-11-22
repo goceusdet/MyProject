@@ -3,6 +3,7 @@ package com.stryker.stepDefinitions;
 import com.stryker.pages.ContactPage;
 import com.stryker.pages.HomePage;
 import com.stryker.utils.API_Utils;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.restassured.response.Response;
@@ -10,19 +11,20 @@ import org.junit.Assert;
 
 import java.util.Map;
 
-public class ContactSalesRepresentativeStepDeff {
+public class US_01_ContactSalesRepresentativeStepDeff {
 
     Response response;
-    String actualPageTitle;
-    String actualMessageAPI;
-    String actualMessageAPI2;
-    String expectedPageTitle;
-    String expectedMessageAPI;
-    String uiConfirmationMessage;
     Map<String, String> requestBody;
     HomePage homePage = new HomePage();
-    String expectedConfirmationMessageUI;
+    public static String actualPageTitle;
+    public static String actualMessageAPI;
+    public static String actualMessageAPI2;
+    public static String expectedPageTitle;
+    public static String expectedMessageAPI;
+    public static String uiConfirmationMessage;
     ContactPage contactPage = new ContactPage();
+    public static String expectedConfirmationMessageUI;
+
 
     @Given("user is on {string} page")
     public void user_is_on_page(String pageName) {
@@ -60,7 +62,7 @@ public class ContactSalesRepresentativeStepDeff {
 
     @Given("user sends POST request {string} with all filled out form-fields to endpoint {string}")
     public void user_sends_post_request_with_all_filled_out_form_fields_to_endpoint(String email, String endpoint) {
-        response = API_Utils.sendPOSTRequestWithFilledOutForm(API_Utils.requestBody(email), endpoint);
+        response = API_Utils.sendPOSTRequestWithFilledOutForm(API_Utils.requestBodyFilledOutForm(email), endpoint);
     }
 
     @Then("api {string} response field should be {string}")
@@ -91,6 +93,11 @@ public class ContactSalesRepresentativeStepDeff {
     public void user_sends_post_request_with_all_filled_out_fields_to_endpoint(String body, String endpoint) {
         requestBody = API_Utils.requestBodyWithValidSpec(body);
         response = API_Utils.sendPOSTWithValidSpec(requestBody, endpoint);
+    }
+
+    @And("user fills out form with missing {string} field")
+    public void userFillsOutFormWithMissingField(String field) {
+    contactPage.fillOutForm(field);
     }
 
 }

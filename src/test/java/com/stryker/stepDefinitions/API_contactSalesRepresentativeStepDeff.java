@@ -14,12 +14,12 @@ import java.util.Map;
 
 public class API_contactSalesRepresentativeStepDeff {
 
-    Response response;
+    public static Response response;
     Map<String, String> body;
     String actualKeyFieldValue;
     String actualContentTypeHeader;
-    RequestSpecification requestSpecification;
-    RequestSpecification requestSpecificationForPOST;
+    public static RequestSpecification requestSpecification;
+    public static RequestSpecification requestSpecificationForPOST;
 
 
     @Given("Accept header is {string}")
@@ -34,7 +34,7 @@ public class API_contactSalesRepresentativeStepDeff {
 
     @Given("I create and fill out whole form as request {string}")
     public void i_create_and_fill_out_whole_as_request_body(String reqBody) {
-        body = API_Utils.requestBody(reqBody);
+        body = API_Utils.requestBodyFilledOutForm(reqBody);
     }
 
     @When("I send POST request to {string} endpoint")
