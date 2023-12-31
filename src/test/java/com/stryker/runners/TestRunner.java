@@ -16,8 +16,8 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features", // connects TestRunner with feature files.
         glue = "com/stryker/stepDefinitions",// connects TestRunner with step definitions.
-        dryRun = true,
-        tags = "@TC_05 and @US_02 and @ui",
+        dryRun = false,
+        tags = "@US_05 and @ui",
         publish = true // generating a report with public link
 )
 public class TestRunner {
